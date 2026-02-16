@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional portfolio of Soumyajit – About, Skills, Projects, and Contact." />
+  <title>Soumyajit | Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Login page minimal styles (preserve main design) */
+    .login-page-container{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:radial-gradient(1200px 600px at 80% -10%, rgba(124,58,237,0.18), transparent),radial-gradient(900px 500px at 10% 10%, rgba(34,211,238,0.12), transparent),var(--bg,#0b0f17);}
+    .login-card{background:var(--surface,#0f172a);border:1px solid var(--border,rgba(148,163,184,0.14));border-radius:16px;padding:36px;max-width:420px;width:100%;color:var(--text,#e5e7eb)}
+    .login-card h2{margin:0 0 8px}
+    .login-card p{margin:0 0 16px;color:var(--muted,#9aa4b2)}
+    .field{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+    .field input{padding:10px 12px;border-radius:8px;border:1px solid var(--border,#d1d5db);background:var(--panel,#111827);color:var(--text,#e5e7eb)}
+    .login-actions{display:flex;gap:10px;margin-top:12px}
+    .muted.small{font-size:12px;color:var(--muted,#9aa4b2)}
+    .auth-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:1000}
+    #logoutBtn{display:none}
+  </style>
+</head>
+<body>
+
+  <!-- AUTH CONTAINER (login + register) -->
+  <div id="loginPage" class="login-page-container" aria-hidden="false">
+    <div class="login-card" role="dialog" aria-labelledby="authTitle">
+      <div class="login-header">
+        <h2 id="authTitle">Sign in</h2>
+        <p id="authSub">Enter your credentials to access the portfolio.</p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form" novalidate>
+        <div class="field">
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" name="email" type="email" placeholder="your.email@example.com" required />
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" name="password" type="password" placeholder="Enter your password" required />
+        </div>
+        <div class="login-actions">
+          <button id="loginSubmit" class="btn primary" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+          <a id="toRegister" href="#" class="btn" role="button">Create Account</a>
+        </div>
+        <div style="margin-top:10px"><span id="loginMsg" class="muted small"></span></div>
+      </form>
+
+      <!-- Register Form (hidden by default) -->
+      <form id="registerForm" class="auth-form" style="display:none;margin-top:6px" novalidate>
+        <div class="field">
+          <label for="registerEmail">Email</label>
+          <input id="registerEmail" name="email" type="email" placeholder="your.email@example.com" required />
+        </div>
+        <div class="field">
+          <label for="registerPassword">Password</label>
+          <input id="registerPassword" name="password" type="password" placeholder="Choose a password" required />
+        </div>
+        <div class="login-actions">
+          <button id="registerSubmit" class="btn primary" type="submit"><i class="fa-solid fa-user-plus"></i> Register</button>
+          <a id="toLogin" href="#" class="btn" role="button">Back to Login</a>
+        </div>
+        <div style="margin-top:10px"><span id="registerMsg" class="muted small"></span></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO CONTENT (hidden by default) -->
+  <div id="portfolioContent" style="display:none">
+
+    <!-- Navbar -->
+    <header class="navbar" role="navigation" aria-label="Primary">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Home"><span class="dot" aria-hidden="true"></span><span>Soumyajit</span></a>
+        <button id="menuToggle" class="menu-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+        <nav id="primaryNav" class="nav-links">
+          <a href="#profile">Profile</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a href="#resume" class="chip"><i class="fa-solid fa-file-lines"></i> Resume</a>
+          <button id="logoutBtn" class="chip" aria-label="Logout" style="background:none;border:none;cursor:pointer;padding:0;font-family:inherit;"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main id="top" class="hero" role="main">
+      <section>
+        <h1 class="title">Building robust web experiences with clean code and thoughtful design.</h1>
+        <p class="subtitle">Frontend-focused full-stack engineer specializing in React, Node.js, and performant UI. I turn ideas into scalable products.</p>
+        <div class="hero-cta"><a class="btn primary" href="#projects"><i class="fa-solid fa-rocket"></i> View Projects</a><a class="btn" href="#contact"><i class="fa-solid fa-paper-plane"></i> Contact Me</a></div>
+      </section>
+      <div class="avatar-wrap">
+        <div class="avatar avatar--empty" aria-label="Profile photo"><img id="heroProfileImage" alt="Profile photo of Soumyajit" src="" width="220" height="220" loading="eager" decoding="async" /><span class="avatar-placeholder" aria-hidden="true"><i class="fa-solid fa-user"></i></span><span class="status"><i class="fa-solid fa-circle"></i> Available</span></div>
+        <div class="hero-avatar-actions" style="text-align:center;margin-top:12px;"><button id="editHeroImageBtn" class="btn" type="button"><i class="fa-solid fa-pen"></i> Edit</button><input type="file" id="heroImageUpload" accept="image/*" style="display:none" /></div>
+      </div>
+    </main>
+
+    <!-- About -->
+    <section id="about"><div class="container"><h2 class="section-title">About</h2><p class="section-subtitle">Engineer with a passion for delivering delightful, accessible interfaces and reliable backend systems.</p><div class="cards"><div class="card"><h4>Who I Am</h4><p class="muted">I’m a software engineer with a strong focus on building performant web apps. I value code quality, accessibility, and great developer experience.</p></div><div class="card"><h4>What I Do</h4><p class="muted">Design and develop web applications end‑to‑end: planning, UI/UX, frontend, APIs, CI/CD, and cloud deployment.</p></div><div class="card"><h4>How I Work</h4><p class="muted">I ship iteratively, write tests, monitor metrics, and communicate clearly. I enjoy cross‑functional collaboration.</p></div></div></div></section>
+
+    <!-- Skills -->
+    <section id="skills"><div class="container"><h2 class="section-title">Skills</h2><p class="section-subtitle">A snapshot of technologies and tools I frequently use.</p><div class="cards"><div class="card"><h4>Frontend</h4><div class="stack"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span></div></div><div class="card"><h4>Backend</h4><div class="stack"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span></div></div><div class="card"><h4>Tools</h4><div class="stack"><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Jest</span><span class="chip">Playwright</span><span class="chip">AWS</span></div></div></div></div></section>
+
+    <!-- Projects -->
+    <section id="projects"><div class="container"><h2 class="section-title">Projects</h2><p class="section-subtitle">Selected work that highlights product thinking, UX, and engineering.</p><div class="projects"><article class="project"><h3>Analytics Dashboard</h3><p class="muted">A responsive analytics platform with interactive charts, role-based access, and real-time updates.</p><div class="meta"><span class="chip">React</span> <span class="chip">Node</span> <span class="chip">PostgreSQL</span></div></article><article class="project"><h3>E‑commerce Microservice</h3><p class="muted">Order and inventory microservice with event-driven architecture and horizontal scaling.</p><div class="meta"><span class="chip">Express</span> <span class="chip">MongoDB</span> <span class="chip">RabbitMQ</span></div></article><article class="project"><h3>Design System</h3><p class="muted">Reusable component library with theming, accessibility, and documentation site.</p><div class="meta"><span class="chip">TypeScript</span> <span class="chip">Storybook</span> <span class="chip">CSS</span></div></article><article class="project"><h3>Mobile Fitness App</h3><p class="muted">Cross‑platform app for tracking workouts, nutrition, and coach feedback.</p><div class="meta"><span class="chip">React Native</span> <span class="chip">Expo</span> <span class="chip">Firebase</span></div></article></div></div></section>
+
+    <!-- Contact -->
+    <section id="contact"><div class="container"><h2 class="section-title">Contact</h2><p class="section-subtitle">Interested in working together or have a question? Send a message.</p><div class="contact"><div class="info"><p class="muted">I’m currently open to freelance, full‑time roles, and collaboration. The fastest way to reach me is via email.</p><div class="stack mt-10"><span class="chip"><i class="fa-solid fa-envelope"></i> your.email@example.com</span><span class="chip"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/yourprofile</span><span class="chip"><i class="fa-brands fa-github"></i> github.com/yourhandle</span></div></div><form class="form"><div class="row"><div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required /></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div></div><div class="field mt-12"><label for="subject">Subject</label><input id="subject" name="subject" type="text" placeholder="Project inquiry" /></div><div class="field mt-12"><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea></div><div class="form-actions"><button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button><span class="muted small">This is a demo form – wire it to your backend or service.</span></div></form></div></div></section>
+
+    <!-- Resume -->
+    <section id="resume"><div class="container"><h2 class="section-title">Resume</h2><p class="muted">Add your downloadable resume link here. Example: <a class="btn" href="#"><i class="fa-solid fa-download"></i> Download PDF</a></p></div></section>
+
+    <footer><div class="container"><div>&copy; <span id="year"></span> Soumyajit. All rights reserved.</div></div></footer>
+
+  </div><!-- End portfolioContent -->
+
+  <script src="script.js"></script>
+
+  <!-- Auth handled in script.js -->
+
+</body>
+</html>
